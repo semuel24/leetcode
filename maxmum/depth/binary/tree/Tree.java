@@ -1,5 +1,8 @@
 package maxmum.depth.binary.tree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import tree.common.TreeNode;
 
 public class Tree {
@@ -8,12 +11,14 @@ public class Tree {
 	public int maxDepth(TreeNode root) {
 //		return recursive(root);
 		
-		if(root == null) {
-			return 0;
-		}
-		int h = 1;
-		dfs(root, h);
-		return maxH;
+//		if(root == null) {
+//			return 0;
+//		}
+//		int h = 1;
+//		dfs(root, h);
+//		return maxH;
+		
+		return bylevel(root);
     }
 	
 	
@@ -41,6 +46,31 @@ public class Tree {
 		return 1 + Math.max(recursive(root.left), recursive(root.right));
 	}
 	
+	private int bylevel(TreeNode root) {
+		if(root == null) {
+			return 0;
+		}
+		
+		//initialize level
+		List<TreeNode> currentlevel = new ArrayList<TreeNode>();
+		currentlevel.add(root);
+		
+		int height = 0;
+		while(currentlevel.size() != 0) {
+			height ++;
+			List<TreeNode> nextlevel = new ArrayList<TreeNode>();
+			for(TreeNode _t : currentlevel) {
+				if(_t.left != null) {
+					nextlevel.add(_t.left);
+				}
+				if(_t.right != null) {
+					nextlevel.add(_t.right);
+				}
+			}
+			currentlevel = nextlevel;
+		}
+		return height;
+	}
 	
 }
 

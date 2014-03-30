@@ -2,6 +2,7 @@ package symmetric.tree;
 
 import java.util.ArrayList;
 import java.util.List;
+import tree.common.TreeNode;
 
 public class Tree {
 
@@ -50,14 +51,5 @@ public class Tree {
 		}
 		return true;
 	}
-	
-	private class TreeNode {
-		int val;
-		TreeNode left;
-		TreeNode right;
 
-		TreeNode(int x) {
-			val = x;
-		}
-	}
 }
